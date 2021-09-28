@@ -1,0 +1,10 @@
+body {
+    --twitter-color: #be3b2a;
+    --twitter-background: aqua;
+    
+}
+
+.app {
+    display: flex;
+    
+}
