@@ -14,6 +14,34 @@
     margin-bottom: 20px;
 }
 
+.sidebar__button {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.sidebar__button > h2 {
+    font-weight: 800;
+    font-size: 20px;
+    margin-right: 20px;
+    color: var(--twitter-color)
+}
+
+.sidebar__button--active {
+    color: var(--twitter-color)
+}
+
+.sidebar__button > .MuiSvgIcon-root {
+    padding: 20px;
+}
+
+.sidebar__button:hover {
+    background-color: aqua;
+    border-radius: 30px;
+    color: var(--twitter-color);
+    transition: color 100ms ease-out;
+}
+
 .sidebar_tweet {
     background-color: var(--twitter-color) !important;
     border: none !important;
