@@ -19,8 +19,6 @@ function Register() {
     setNewUser({...newUser, [name]: value})
   }
 
-  console.log(newUser)
-
   const createUser = () => {
     let data = {
       avatar: newUser.Avatar,
@@ -46,6 +44,10 @@ function Register() {
       })
     }
   };
+
+
+
+
   
     return(
       <div>

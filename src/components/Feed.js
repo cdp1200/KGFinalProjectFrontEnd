@@ -5,32 +5,30 @@ import Register from './Register'
 import TweetServices from '../services/TweetServices'
 import "./css/Feed.css";
 import GetTweets from './GetTweets';
+import Login from './Login';
 
 function Feed( pageView ) {
     var theView = pageView.view;
-    
-    // const initTweets = {
-    //     myArray: []
-    // }
+        
+    const [tweets, setTweets] = useState(null);
 
-    // const [tweets, setTweets] = useState(initTweets);
-
-    // const tweetsToFeed = (data) => {
-    //     setTweets(data)
-    // }
+        useEffect(() => {
+            const theTweets = async () => {
+                await TweetServices.getAll()
+                .then((blogs) => {
+                    console.log('get tweets', blogs)
+                    setTweets(blogs.data)
+                })
+                .catch((err) => {
+                    console.log("get tweets err", err)
+                })
+            }
+            theTweets();
+        }, []);
     
-    // <GetTweets tweetsToFeed={tweetsToFeed} />
+        console.log(tweets)
 
-    // console.log(tweets)
 
-    
-    // const theTweets = getTweets();
-    
-    // console.log(theTweets)
-
-    // const anything = theTweets.data
-    
-    // console.log(anything)
     if (theView === "Register") {
         return (
         <div className="feed">
@@ -46,7 +44,7 @@ function Feed( pageView ) {
             <div className="feed__header">
                 <h2>Login</h2>
             </div>
-
+            <Login />
         </div>
         )
     } else {
@@ -59,15 +57,15 @@ function Feed( pageView ) {
 
             <TweetBox />
 
-            {/* {theTweets.map(tweet => ( */}
+            {tweets.map(tweet => (
                 <Post 
                 displayName="Hardcoded4Now"
                 userName="alsoHardcoded"
                 verified={true}
-                text=''
+                text={tweet.description}
                 avatar="https://www.planetware.com/wpimages/2019/10/switzerland-in-pictures-most-beautiful-places-matterhorn.jpg"
                 image=''/>
-            {/* ))} */}
+            ))} 
             
             
 
