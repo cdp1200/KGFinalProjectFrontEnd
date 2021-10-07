@@ -46,7 +46,35 @@ function Widgets() {
     }
 
 
+    const initBoredState = {
+        activity: "",
+        type: "",
+        participants: 0,
+        price: 0,
+        link: "",
+        accessibility: 0.00,
+    }
 
+    const [bored, setBored] = useState(initBoredState)
+
+    const boredAPI = async () => {
+        await fetch(`https://www.boredapi.com/api/activity`, {
+            method: "GET"
+        })
+        .then(response => 
+	        response.json()
+        )
+        .then((boredObj) => {
+            
+            console.log(boredObj)
+
+            // threeDayForecast(weatherDataObj)
+        })
+        .catch(err => {
+	        console.error(err);
+        });
+        // setLocation(checkLocation);
+    }
 
 
 
@@ -62,23 +90,29 @@ function Widgets() {
             <div id="current">
                 <div className="label">{temp.temperature}</div>
             </div>
-            <div id="upcoming">
-                <div className="label">Three-day forecast</div>
-            </div>
         </div>
         ) : (
             <div id="forecast" >
             <div id="current">
                 <div className="label">Current conditions</div>
             </div>
-            <div id="upcoming">
-                <div className="label">Three-day forecast</div>
-            </div>
         </div>
     
         )}
         </div>
+
+
+        <div>
+            <button type="button" onClick={bored}>
+                Click me
+            </button>
         </div>
+
+
+
+        </div>
+
+        
     )
 }
 
