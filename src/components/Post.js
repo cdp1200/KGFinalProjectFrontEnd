@@ -14,7 +14,10 @@ function Post({
     text,
     image,
     avatar,
-}) {
+}) 
+
+{
+    
     return (
         <div className="post">
             <div className="post__avatar">

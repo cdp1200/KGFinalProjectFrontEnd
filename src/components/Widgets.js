@@ -31,7 +31,7 @@ function Widgets() {
 	        }
         })
         .then(response => 
-	        response.json()
+            response.json()
         )
         .then((weatherDataObj) => {
             setResponse(true)
@@ -40,7 +40,7 @@ function Widgets() {
             // threeDayForecast(weatherDataObj)
         })
         .catch(err => {
-	        console.error(err);
+            console.error(err);
         });
         // setLocation(checkLocation);
     }
@@ -55,32 +55,52 @@ function Widgets() {
         accessibility: 0.00,
     }
 
-    const [bored, setBored] = useState(initBoredState)
+    const [bored, setBored] = useState(initBoredState);
+    const [boredResponse, setBoredResponse] = useState(false);
 
     const boredAPI = async () => {
         await fetch(`https://www.boredapi.com/api/activity`, {
             method: "GET"
         })
         .then(response => 
-	        response.json()
+            response.json()
         )
         .then((boredObj) => {
-            
-            console.log(boredObj)
-
-            // threeDayForecast(weatherDataObj)
+            setBored({
+                activity: boredObj.activity,
+                type: boredObj.type,
+                participants: boredObj.participants,
+                price: boredObj.price,
+                link: boredObj.link,
+                accessibility: boredObj.accessibility,
+            })
+            setBoredResponse(true)
         })
         .catch(err => {
-	        console.error(err);
+            console.error(err);
         });
-        // setLocation(checkLocation);
     }
-
-
 
     return(
         <div className="widgets">
-            <div id="content">
+        <div>
+            <button className="bored__button" type="button" onClick={boredAPI}>
+                Bored... Click Me
+            </button>
+        </div>
+
+        {boredResponse ? (
+            <div id="activity" >
+                <div className="activity">Maybe try to...{bored.activity}</div>
+            </div>
+        ) : (
+            <div id="activity">
+                <div className="activity">Maybe try to...</div>
+            </div>
+        )}
+
+
+<div id="content">
         <div id="request">
             <input placeholder="Check your cities forecast" id="value"  type="text" value={location.value} onChange={handleInputChange} name="value"/> 
             <button id="submit"  type="button" value="Get Weather" onClick={newLocation} >Check Weather</button>
@@ -88,7 +108,7 @@ function Widgets() {
         {response ? (
             <div id="forecast" >
             <div id="current">
-                <div className="label">{temp.temperature}</div>
+                <div className="label">{temp.temperature} F</div>
             </div>
         </div>
         ) : (
@@ -99,13 +119,6 @@ function Widgets() {
         </div>
     
         )}
-        </div>
-
-
-        <div>
-            <button type="button" onClick={bored}>
-                Click me
-            </button>
         </div>
 
 

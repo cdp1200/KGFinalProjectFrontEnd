@@ -30,18 +30,12 @@ function Register() {
     if(data.password === data.retypedPass) {
       UserServices.create(data)
       .then(response => {
-        setNewUser(
-        { 
-        username: response.data.username,
-        email: response.data.email,
-        password: response.data.password,
-        }
-      );
-      setNewUser(initUserState)
+        return 
       })
       .catch(e => {
         console.log(e);
       })
+      setNewUser(initUserState)
     }
   };
 

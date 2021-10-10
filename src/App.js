@@ -3,35 +3,63 @@ import './App.css';
 import Sidebar from "./components/Sidebar";
 import Feed from "./components/Feed";
 import Widgets from './components/Widgets'
-import TweetServices from './services/TweetServices'
 
 function App() {
-  async function allTweets() {
-    await TweetServices.getAll()
-    .then((res) => {
-        return res.data
-    })
+  const initLoginState = {
+    bool: true,
 }
 
-console.log(allTweets())
+const [isLoggedIn, setIsLoggedIn] = useState(initLoginState)
 
-  const initView = {
-    page: "Home"
-  }
+const loginPropManager = (data) => {
+    setIsLoggedIn(data)
+}
 
-  const [pageView, setPageView] = useState(initView);
+return (
+  <div className="app">
+    <Sidebar loginPropManager={loginPropManager} loggedIn={isLoggedIn} /> 
+    <Feed loggedIn={isLoggedIn}/>
+    <Widgets /> 
+  </div>
+);
 
-  const thisPage = (data) => {
-      setPageView(data)
-  }
-
-  return (
-    <div className="app">
-      <Sidebar thisPage={thisPage}/> 
-      <Feed view={pageView} thisPage={thisPage}/>
-      <Widgets /> 
-    </div>
-  );
 }
 
 export default App;
+
+
+
+
+
+// return (
+//   <div className="app">
+//     <Sidebar loggedIn={isLoggedIn} /> 
+//     <Feed loginPropManager={loginPropManager}/>
+//     <Widgets /> 
+//   </div>
+// );
+
+
+
+
+
+
+
+
+  // const initView = {
+  //   page: "Home"
+  // }
+
+  // const [pageView, setPageView] = useState(initView);
+
+  // const thisPage = (data) => {
+  //     setPageView(data)
+  // }
+
+  // return (
+  //   <div className="app">
+  //     <Sidebar thisPage={thisPage}/> 
+  //     <Feed view={pageView} thisPage={thisPage}/>
+  //     <Widgets /> 
+  //   </div>
+  // );
