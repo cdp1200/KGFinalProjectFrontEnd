@@ -1,6 +1,7 @@
 import http from "../http-common";
 
 const get = (data) => {
+    console.log("http data sent to server for login attempt", data)
     return http.get("/user", data);
 }
 

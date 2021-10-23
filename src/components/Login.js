@@ -19,21 +19,18 @@ function Login() {
   }
 
 
-  // const loginUser = async (req, res) => {
-  //   console.log(req)
-  //   let data = {
-  //     email: user.email,
-  //     password: user.password
-  //   }
-  //   await UserServices.get(data)
-  //   .then((res) => {
-  //     console.log(res)
-  //     setUser(initUserState)
-  //   })
-  //   .catch((e) => {
-  //     console.log(e)
-  //   })
-  // }
+  const loginUser =  async (e) => {
+    e.preventDefault();
+    console.log("what the hell is e", e)
+    await UserServices.get()
+    .then((res) => {
+      console.log('login response attempt', res)
+      
+    })
+    .catch((e) => {
+      console.log(e)
+    })
+  }
 
     return (
         <div>
@@ -62,7 +59,7 @@ function Login() {
           />
             <label htmlFor="floatingPasswordCustom">Password</label>
         </Form.Floating>
-        <button className="submit" type="button" >Submit</button>
+        <button className="submit" type="button" onClick={loginUser}>Submit</button>
         </div>
     )
 }

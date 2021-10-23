@@ -18,6 +18,7 @@ export default function Sidebar ({loginPropManager, loggedIn}) {
         return (
             <div className="sidebar">
             <TwitterIcon className="sidebar__twitterIcon"/>
+            <ul className="sidebar__list">
             <li className="nav-item">
             <Link to={"/tweets"} className="nav-link">
                 <SidebarOption active Icon={HomeIcon} text="Home" />
@@ -33,6 +34,7 @@ export default function Sidebar ({loginPropManager, loggedIn}) {
                 <SidebarOption active Icon={LoginIcon} text="Login" />
             </Link>
         </li>
+        </ul>
         </div>
         )
         
@@ -41,6 +43,7 @@ export default function Sidebar ({loginPropManager, loggedIn}) {
         
         <div className="sidebar">
             <TwitterIcon className="sidebar__twitterIcon"/>
+            <ul className="sidebar__list">
         <li className="nav-item">
             <Link to={"/tweets"} className="nav-link">
                 <SidebarOption active Icon={HomeIcon} text="Home" />
@@ -56,7 +59,7 @@ export default function Sidebar ({loginPropManager, loggedIn}) {
                 <SidebarOption active Icon={LockIcon} text="Logout" />
             </Link>
         </li>
-
+        </ul>
             {/* <Button variant="outlined" className="sidebar_tweet" fullWidth>Tweet</Button> */}
         </div>
     )

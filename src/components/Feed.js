@@ -37,17 +37,17 @@ function Feed( {loggedIn} ) {
     console.log("Feed login info", isLoggedIn)
     // console.log("feed loginpropmanager", loginPropManager)
 
-        if(loggedIn) {
-            return (
-                <div>
-                    <Switch>
-                        <Route exact path={["/", "/tweets"]} component={TweetsFeed} isLoggedIn={isLoggedIn} value={loggedIn} onChange={handleInputChange} name="bool"/>
-                        <Route exact path="/about" component={About} />
-                        <Route exact path="/logout" component={Logout} />
-                    </Switch>
-                </div>
-            )
-        } else {
+        // if(loggedIn) {
+        //     return (
+        //         <div>
+        //             <Switch>
+        //                 <Route exact path={["/", "/tweets"]} component={TweetsFeed} isLoggedIn={isLoggedIn} value={loggedIn} onChange={handleInputChange} name="bool"/>
+        //                 <Route exact path="/about" component={About} />
+        //                 <Route exact path="/logout" component={Logout} />
+        //             </Switch>
+        //         </div>
+        //     )
+        // } else {
             return (
                 
                 <div>
@@ -59,7 +59,7 @@ function Feed( {loggedIn} ) {
                     </Switch>
                 </div>
             )
-        }
+        // }
 }
 
 export default Feed;
